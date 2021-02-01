@@ -1,0 +1,152 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-attachment: fixed;
+    background: #0f0c29;  ///* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #302b63, #0f0c29);  ///* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,#302b63, #0f0c29); ///* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+///* General */
+ul{
+    li{
+        list-style: none;
+        a{
+            text-decoration: none;
+        }
+    }
+}
+///* /General */
+
+///* Utility */
+.flex{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+///* /Utility */
+
+///* #header */
+
+#header{
+    position: fixed;
+    width: 100%;
+    height: 150px;
+    background-color: black;
+    background-image: url(../assets/img/slide_1.jpg); 
+    background-position: right;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+    opacity: 1;
+    .container{
+        height: 150px;
+        .row{
+            height: 100%;
+            #logo{
+                height: 100%;
+            }
+            #navbar{
+                height: 100%;
+                padding-right: 100px;
+                ul{
+                    height: 100%;
+                    justify-content: flex-end;
+                    .link{
+                        margin-right: 3%;
+                        border-bottom: 2px solid transparent;
+                        &:last-of-type{
+                            margin: 0;
+                        }
+                        &:hover{
+                            border-bottom: 2px solid white;
+                            transition: color 0.5s;
+                        }
+                        a{
+                            color: #f7f7f7;
+                            font-weight: 500;
+                            text-transform: capitalize;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }   
+}
+
+// /* #/header */
+
+// /* #main */
+#main{
+    width: 100%;
+    padding-top: 150px;
+    .row{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        &:first-of-type{
+            padding-top: 20px;
+        }
+        &:last-of-type{
+            padding-bottom: 20px;
+        }
+    }
+}
+$cardheight: 400px;
+.row{
+    .card{
+        height: $cardheight;
+        padding-right: 20px;
+        // padding-bottom: 20px;
+        // position: relative;
+        cursor: pointer;
+        .image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-position: right;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%);
+            transition: filter 0.5s;
+            h1{
+                color: #f7f7f7;
+                font-family: 'Caveat', cursive;
+                font-size: 60px;
+                font-weight: 500;
+                text-transform: capitalize;
+            }
+        }
+        .overlay{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.3);
+            
+        }
+        .active{
+            filter: grayscale(0%);
+            transition: filter 0.5s;
+        }
+    }
+    .sheet{
+        height: $cardheight;
+        color: white;
+        border: 1px solid red; //debug
+        padding: 20px;
+        font-size: 13px;
+
+    }
+}
+//inserire scheda
+
+#footer{
+    width: 100%;
+    height: 600px;
+    background-color: #111;
+    opacity: 1;
+}

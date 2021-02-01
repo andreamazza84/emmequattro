@@ -21,19 +21,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <!-- 12Bool - stylesheet -->
-    <link rel="stylesheet" href="12-bool-responsive.css">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    <title>Emme Quattro Srl</title>
+    <link rel="stylesheet" href="dist/css/app.css">
+    <title>Emme Quattro Srl - Il Colore su Misura</title>
 </head>
 <body>
     <div id="root">
         <header id="header">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 logo flex">
-                        <a href="#"><img src="assets/img/logo-inv-colors.jp" alt="Emme Quattro S.r.l"></a>
+                    <div id="logo" class="col-lg-6 logo flex">
+                        <a href="#"><img src="dist/assets/img/logo-inv-colors.jpg" alt="Emme Quattro S.r.l"></a>
                     </div>
                     <nav id="navbar" class="col-lg-6">
                         <ul class="flex">
@@ -46,17 +44,34 @@
         <!-- /#header -->
         <main id="main">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12" v-for="(card, index) in cards">
+                <div class="row" v-for="(card, index) in cards">
+                    <div :class="card.visible?'col-lg-6':'col-lg-12'">
                         <div class="card">
-                            <img :src="url+card.img" :alt="card.list" :class="(filter && pointer===index)?'active':''">
-                            <div class="overlay" @mouseover="(pointer=index, filter=true)" @mouseleave="filter=false">
+                            <div class="image" :style="'background-image: url(' + url+card.img + ')'" :class="(filter && pointer===index)?'active':''">
+                                <div class="overlay" @mouseover="(pointer=index, filter=true)" @mouseleave="filter=false" @click="show(index)"></div>
                                 <h1>{{card.name}}</h1>
                             </div>
                         </div>
-
+                        <!-- rivedere la posizione del v-for -->
                     </div>
-                    
+                    <div v-if="card.visible" class="sheet col-lg-6">
+                        Massimo Mazza inizia la sua avventura nel mondo del mobile a soli 18 anni.
+                        Nel tempo definisce la sua idea di impresa nel servizio di “Laboratorio qualificato in azienda”, 
+                        concetto che si erge sull'idea di migliorare la qualità del prodotto verniciato.
+                        
+                        Dopo anni di servizio come Mazza Rappresentanze SAS, fonda EMME QUATTRO SRL. 
+                        L'Azienda cresce negli anni grazie ad affidabilità, costanza, serietà e professionalità.
+                        
+                        clienti con prodotti che rispondo alle loro particolari esigenze, sviluppando le migliori 
+                        prestazioni tra 
+                        DAL 1991 EMME QUATTRO SRL continua ad offrire i suoi prodotti e servizi puntando
+                        soprattutto sui suoi principi: "ONESTÀ - PROFESSIONALITÀ - QUALITÀ".
+                        Le Aziende con cui Emme Quattro opera, leader nei loro settori, hanno contribuito a portare avanti questa filosofia. Da
+                        sempre EMME QUATTRO SRL è impegnata in un processo di miglioramento continuo dei livelli qualitativi di ogni sua
+                        attività: EMME QUATTRO SRL ha deciso di specializzarsi unicamente nel servizio su misura delle vernici per legno, oltre
+                        a mantenere l’attività di agenzia delle aziende sopra citate, riservando un’elevata quota dei suoi investimenti ai
+                        Laboratori, onde garantire sempre un servizio rapido ed efficiente.
+                    </div>
                 </div>
             </div>
         </main>
@@ -66,6 +81,6 @@
     </div>
 
     <!-- VueJs - Script -->
-    <script src="main.js"></script>
+    <script src="dist/app/app.js"></script>
 </body>
 </html>
